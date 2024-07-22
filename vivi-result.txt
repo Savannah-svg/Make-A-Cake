@@ -1,0 +1,128 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Make A Cake ",
+    LoadingTitle = "SavannahHub",
+    LoadingSubtitle = "By Savannah",
+    ConfigurationSaving = {
+       Enabled = false,
+       FolderName = nil, -- Create a custom folder for your hub/game
+       FileName = "SavannahHub"
+    },
+    Discord = {
+       Enabled = true,
+       Invite = "Czjnm8P6", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = false, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Make A Cake Key",
+       Subtitle = "Key In Discord Server",
+       Note = "Join my discord to get the key without doing anything",
+       FileName = "SavannahHubKey", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = {"SavannahHub"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+    }
+ })
+
+
+ local MainTab = Window:CreateTab("Main", nil) -- Title, Image
+ local MainSection = MainTab:CreateSection("Main")
+
+
+ Rayfield:Notify({
+    Title = "Thank You For Using My Script !",
+    Content = "SavannahHub",
+    Duration = 5,
+    Image = 4483362458,
+    Actions = { -- Notification Buttons
+       Ignore = {
+          Name = "Okay!",
+          Callback = function()
+          print("The user tapped Okay!")
+       end
+    },
+ },
+ })
+
+
+ local Button = MainTab:CreateButton({
+    Name = "Make Exp Much",
+    Callback = function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/Rxztent/LogGui/main/InfXP.lua'),true))()
+    end,
+ })
+
+
+ local Toggle = MainTab:CreateToggle({
+    Name = "Auto Farm Exp",
+    CurrentValue = false,
+    Flag = "ToggleSavannah", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Rxztent/LogGui/main/InfXP.lua'),true))()
+    end,
+ })
+
+
+ local Toggle = MainTab:CreateToggle({
+    Name = "Auto Farm Coins(You won't be able to turn it off if you don't leave)",
+    CurrentValue = false,
+    Flag = "ToggleSavannah", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        while true do
+            wait(0.5)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-167.13320922851562, 1010.73828125, -2099.856689453125)
+            wait(0.1)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-92.81444549560547, 1011.3070068359375, -2081.453125)
+            end
+    end,
+ })
+
+
+ local Button = MainTab:CreateButton({
+   Name = "Make u have Much Coins !",
+   Callback = function()
+      local args = {
+         [1] = {
+             ["name"] = "ProcessCake",
+             ["type"] = "Normal"
+         },
+         [2] = "HiddenStatue",
+         [3] = {
+             ["conveyor"] = BrickColor.new(333),
+             ["effect"] = "Award OOO Money",
+             ["shortSides"] = BrickColor.new(333),
+             ["dataType"] = "Frosting",
+             ["noobExpression"] = "Money Crave",
+             ["roof"] = BrickColor.new(333),
+             ["name"] = "Golden",
+             ["list"] = "RANK",
+             ["frosting"] = BrickColor.new(333),
+             ["mesh"] = "rbxassetid://7423129413",
+             ["sides"] = BrickColor.new(333),
+             ["texture"] = "rbxassetid://124475508"
+         }
+     }
+     
+     game:GetService("ReplicatedStorage").dToolkit.Network.RemoteEvent:FireServer(unpack(args)) 
+   end,
+})
+
+
+ local MiscTab = Window:CreateTab("Misc", nil) -- Title, Image
+ local Section = MiscTab:CreateSection("Misc")
+
+
+ local Button = MiscTab:CreateButton({
+    Name = "Rejoin if u turn on Auto Farm Coins",
+    Callback = function()
+        local ts = game:GetService("TeleportService")
+
+        local p = game:GetService("Players").LocalPlayer
+        
+         
+        
+        ts:Teleport(game.PlaceId, p)
+    end,
+ })
